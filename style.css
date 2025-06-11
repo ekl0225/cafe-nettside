@@ -1,0 +1,171 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  /* sommer */
+  --preset-sommer-paledogwood: #f4cfc7;
+  --preset-sommer-lightcoral: #e79796;
+  --preset-sommer-peachfuzz: #ffbe98;
+  --preset-sommer-sunset: #ffc98b;
+  --preset-sommer-sage: #c6c09c;
+
+  /* vår */
+  --preset-vår-roastedpeach: #daa38f;
+  --preset-vår-wholewheat: #dfc49b;
+  --preset-vår-milkycoffee: #9b7d61;
+  --preset-vår-cream: #fed8a6;
+  --preset-vår-jetstream: #c0d4b5;
+
+  /* høst */
+  --preset-høst-deepchampagne: #f2d8a1;
+  --preset-høst-burlywood: #dfbe80;
+  --preset-høst-peru: #cb8140;
+  --preset-høst-dirtybrown: #ab6429;
+  --preset-høst-chocolate: #684627;
+
+  /* vinter */
+  --preset-vinter-axolotl: #6a7a5a;
+  --preset-vinter-morningblue: #8daf9b;
+  --preset-vinter-darkvanilla: #d7cbb2;
+  --preset-vinter-opal: #aac4bc;
+  --preset-vinter-sage: #c6c09c;
+}
+.hero {
+  background-color: var(--preset-vinter-morningblue);
+  height: 100vh;
+  max-width: 100vw;
+}
+
+.navbar {
+  background-color: var(--navbar-bg, #333);
+  color: var(--navbar-text, #fff);
+  padding: 1rem;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+}
+
+.image-div {
+  background-image: url(/images/cafe.jpg);
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.hero-text {
+  background-color: var(--preset-vinter-morningblue);
+  width: 50vw;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  row-gap: 0.5rem;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-weight: 10rem;
+  font-size: 4rem;
+}
+footer {
+  background-color: var(--preset-vinter-axolotl);
+  height: 30vh;
+}
+
+.menu-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+/* ----------seasonal colorchanges------------ */
+body {
+  margin: 0;
+  font-family: sans-serif;
+}
+
+.season-title {
+  font-size: 2rem;
+  padding: 1rem;
+  text-align: center;
+}
+
+.season-text {
+  padding: 1rem;
+}
+
+.season-textbox {
+  display: block;
+  margin: 1rem auto;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 4px;
+}
+
+body.winter {
+  background-color: #6a7a5a;
+  color: #d7cbb2;
+  --season-menu-bg: #8daf9b;
+  --navbar-bg: #4d5a41; /* mørkere versjon av bakgrunn */
+  --navbar-text: #b5a78e; /* mørkere versjon av vanlig tekst */
+}
+
+body.spring {
+  background-color: #c0d4b5;
+  color: #9b7d61;
+  --season-menu-bg: #dfc49b;
+  --navbar-bg: #a8b89c;
+  --navbar-text: #7c6048;
+}
+
+body.summer {
+  background-color: #e79796;
+  color: #f4cfc7;
+  --season-menu-bg: #c6c09c;
+  --navbar-bg: #b66b6a;
+  --navbar-text: #c9b4ab;
+}
+
+body.autumn {
+  background-color: #684627;
+  color: #f2d8a1;
+  --season-menu-bg: #cb8140;
+  --navbar-bg: #4e341b;
+  --navbar-text: #dabf8d;
+}
+
+/* ---------test colorchanges------------ */
+
+#season-switcher {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 1rem;
+  flex-wrap: wrap;
+}
+
+#season-switcher button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.15);
+  color: inherit;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(3px);
+  border: 2px solid transparent;
+}
+
+#season-switcher button.active {
+  border-color: currentColor;
+  font-weight: bold;
+  transform: scale(1.05);
+}

@@ -3,6 +3,7 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 :root {
   /* sommer */
   --preset-sommer-paledogwood: #f4cfc7;
@@ -32,13 +33,32 @@
   --preset-vinter-opal: #aac4bc;
   --preset-vinter-sage: #c6c09c;
 }
-.hero {
-  background-color: var(--preset-vinter-morningblue);
-  height: 100vh;
-  max-width: 100vw;
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  font-family: sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--season-bg);
+  color: var(--season-text);
 }
 
 .navbar {
+  height: 60px; /* fast høyde på navbar */
   background-color: var(--navbar-bg, #333);
   color: var(--navbar-text, #fff);
   padding: 1rem;
@@ -49,105 +69,54 @@
   justify-content: space-between;
   align-items: center;
   z-index: 10;
+  flex-shrink: 0;
 }
 
 .image-div {
+  height: 100vh; /* eller 50vh, avhengig av ønsket effekt */
   background-image: url(/images/cafe.jpg);
   background-size: cover;
-  height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 .hero-text {
-  background-color: var(--preset-vinter-morningblue);
   width: 50vw;
-  height: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   row-gap: 0.5rem;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-  font-weight: 10rem;
+  font-weight: 600;
   font-size: 4rem;
-}
-footer {
-  background-color: var(--preset-vinter-axolotl);
-  height: 30vh;
-}
-
-.menu-display {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-
-/* ----------seasonal colorchanges------------ */
-body {
-  margin: 0;
-  font-family: sans-serif;
-}
-
-.season-title {
-  font-size: 2rem;
-  padding: 1rem;
+  color: inherit;
   text-align: center;
 }
 
-.season-text {
-  padding: 1rem;
+.hero-textbox {
+  background-color: var(--season-textbox-bg, rgba(255, 255, 255, 0.8));
+  color: var(--season-text, #333);
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  max-width: 80%;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 600;
+  user-select: none;
+  transition: background-color 0.5s ease, color 0.5s ease;
 }
 
-.season-textbox {
-  display: block;
-  margin: 1rem auto;
-  padding: 0.5rem;
-  font-size: 1rem;
-  border: none;
-  border-radius: 4px;
-}
-
-body.winter {
-  background-color: #6a7a5a;
-  color: #d7cbb2;
-  --season-menu-bg: #8daf9b;
-  --navbar-bg: #4d5a41; /* mørkere versjon av bakgrunn */
-  --navbar-text: #b5a78e; /* mørkere versjon av vanlig tekst */
-}
-
-body.spring {
-  background-color: #c0d4b5;
-  color: #9b7d61;
-  --season-menu-bg: #dfc49b;
-  --navbar-bg: #a8b89c;
-  --navbar-text: #7c6048;
-}
-
-body.summer {
-  background-color: #e79796;
-  color: #f4cfc7;
-  --season-menu-bg: #c6c09c;
-  --navbar-bg: #b66b6a;
-  --navbar-text: #c9b4ab;
-}
-
-body.autumn {
-  background-color: #684627;
-  color: #f2d8a1;
-  --season-menu-bg: #cb8140;
-  --navbar-bg: #4e341b;
-  --navbar-text: #dabf8d;
-}
-
-/* ---------test colorchanges------------ */
-
+/* Sesongknapper */
 #season-switcher {
+  padding: 1rem;
   display: flex;
   justify-content: center;
   gap: 10px;
-  padding: 1rem;
   flex-wrap: wrap;
 }
 
@@ -168,4 +137,220 @@ body.autumn {
   border-color: currentColor;
   font-weight: bold;
   transform: scale(1.05);
+}
+
+footer {
+  height: 30vh;
+  background-color: var(--season-textbox-bg);
+  color: var(--season-text);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+}
+/* produkter */
+.product-container {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem 1rem;
+  background-color: var(--season-bg);
+  flex-wrap: wrap;
+}
+
+.product-box {
+  background-color: var(--season-textbox-bg);
+  color: var(--season-text);
+  border-radius: 16px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  width: 280px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.product-box:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
+}
+
+.product-image {
+  background-color: #ddd; /* Lys grå bakgrunn som placeholder */
+  height: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-style: italic;
+  color: #666;
+  user-select: none;
+}
+
+.product-info {
+  padding: 1rem;
+  text-align: center;
+}
+
+.product-info h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+}
+
+.product-info p {
+  font-size: 1rem;
+  line-height: 1.3;
+  color: var(--season-text);
+}
+
+.menu-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+/* ----------seasonal colorchanges------------ */
+
+.season-title {
+  font-size: 2rem;
+  padding: 1rem;
+  text-align: center;
+}
+
+.season-text {
+  padding: 1rem;
+}
+
+.season-textbox {
+  display: block;
+  margin: 1rem auto;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 4px;
+}
+
+/* Sesongfarger i CSS variabler */
+
+body.winter {
+  --season-bg: var(--preset-vinter-axolotl);
+  --season-text: var(--preset-vinter-darkvanilla);
+  --season-textbox-bg: var(--preset-vinter-morningblue);
+  --season-title: var(--preset-vinter-sage);
+  --navbar-bg: var(--preset-vinter-axolotl);
+  --navbar-text: var(--preset-vinter-darkvanilla);
+  background-color: var(--season-bg);
+  color: var(--season-text);
+}
+
+body.spring {
+  --season-bg: var(--preset-vår-jetstream);
+  --season-text: var(--preset-vår-milkycoffee);
+  --season-textbox-bg: var(--preset-vår-wholewheat);
+  --season-title: var(--preset-vår-cream);
+  --navbar-bg: var(--preset-vår-jetstream);
+  --navbar-text: var(--preset-vår-milkycoffee);
+  background-color: var(--season-bg);
+  color: var(--season-text);
+}
+
+body.summer {
+  --season-bg: var(--preset-sommer-lightcoral);
+  --season-text: var(--preset-sommer-paledogwood);
+  --season-textbox-bg: var(--preset-sommer-sage);
+  --season-title: var(--preset-sommer-lightcoral);
+  --navbar-bg: var(--preset-sommer-lightcoral);
+  --navbar-text: var(--preset-sommer-paledogwood);
+  background-color: var(--season-bg);
+  color: var(--season-text);
+}
+
+body.autumn {
+  --season-bg: var(--preset-høst-chocolate);
+  --season-text: var(--preset-høst-deepchampagne);
+  --season-textbox-bg: var(--preset-høst-burlywood);
+  --season-title: var(--preset-høst-peru);
+  --navbar-bg: var(--preset-høst-chocolate);
+  --navbar-text: var(--preset-høst-deepchampagne);
+  background-color: var(--season-bg);
+  color: var(--season-text);
+}
+
+/* Image-div får fast høyde */
+.image-div {
+  height: 50vh;
+  background-image: url(/images/cafe.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+footer {
+  min-height: 30vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--season-textbox-bg);
+  color: var(--season-text);
+  flex-direction: column;
+}
+
+/* Produktboksene kommer UTENFOR footer og skal ligge under */
+.product-container {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem 1rem;
+  background-color: var(--season-bg);
+  flex-wrap: wrap;
+}
+
+/* Resten av produkt-boks-stylingen som før */
+.product-box {
+  background-color: var(--season-textbox-bg);
+  color: var(--season-text);
+  border-radius: 16px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  width: 280px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.product-box:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
+}
+
+.product-image {
+  background-color: #ddd;
+  height: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-style: italic;
+  color: #666;
+  user-select: none;
+}
+
+.product-info {
+  padding: 1rem;
+  text-align: center;
+}
+
+.product-info h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+}
+
+.product-info p {
+  font-size: 1rem;
+  line-height: 1.3;
+  color: var(--season-text);
 }

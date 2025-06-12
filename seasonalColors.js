@@ -54,3 +54,11 @@ buttons.forEach((btn) => {
     setSeason(btn.dataset.season);
   });
 });
+
+function setSeason(season) {
+  document.body.className = season;
+
+  buttons.forEach((btn) => {
+    btn.classList.toggle("active", btn.dataset.season === season);
+  });
+}
